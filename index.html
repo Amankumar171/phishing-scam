@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f2f4ef">
+    <meta name="description" content="A private, local first-pass review of suspicious links and messages.">
+    <title>Signal Check | Phishing risk review</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="detector.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Signal Check home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 28 28" fill="none"><path d="M14 2.8 23 6v7.1c0 5.7-3.8 9.7-9 12.1-5.2-2.4-9-6.4-9-12.1V6l9-3.2Z"/><path d="m9.6 13.8 2.8 2.8 6-6"/></svg>
+        </span>
+        <span class="brand-name">signal<span>check</span></span>
+      </a>
+      <div class="local-indicator"><span></span> LOCAL ANALYSIS</div>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span>FIELD GUIDE 01</span><i></i> BEFORE YOU CLICK</p>
+          <h1 id="page-title">Look twice.<br><em>Click once.</em></h1>
+          <p class="intro-text">A quick, explainable check for suspicious links and messages. Your text stays right here in this browser.</p>
+        </div>
+        <div class="intro-stamp" aria-hidden="true">
+          <span class="stamp-ring">PAUSE · CHECK · PROCEED ·</span>
+          <svg viewBox="0 0 64 64" fill="none"><path d="M32 7 52 14v16c0 12.4-8.5 21.5-20 27-11.5-5.5-20-14.6-20-27V14L32 7Z"/><path d="m23 31 6 6 13-14"/></svg>
+          <span class="stamp-caption">THINK<br>BEFORE<br>YOU TAP</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Phishing risk checker">
+        <div class="inspect-panel">
+          <div class="panel-topline">
+            <span class="step-index">01 <i></i> INSPECT</span>
+            <span class="privacy-note"><span aria-hidden="true">●</span> Not uploaded or saved</span>
+          </div>
+          <h2>What are you checking?</h2>
+          <p class="panel-hint">Choose a format, then paste the link or message.</p>
+
+          <div class="mode-switch" role="group" aria-label="Content type">
+            <button class="mode-button is-active" type="button" data-mode="url" aria-pressed="true">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 12 12 8M6.5 14.5l-1 1a3.2 3.2 0 0 1-4.5-4.5l3-3a3.2 3.2 0 0 1 4.5 0M13.5 5.5l1-1A3.2 3.2 0 0 1 19 9l-3 3a3.2 3.2 0 0 1-4.5 0"/></svg>
+              <span>Link</span>
+            </button>
+            <button class="mode-button" type="button" data-mode="message" aria-pressed="false">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4.5h14v10H9l-4.5 3v-3H3v-10Z"/><path d="M6.5 8h7M6.5 11h4"/></svg>
+              <span>Message</span>
+            </button>
+          </div>
+
+          <form id="analysis-form" novalidate>
+            <label class="visually-hidden" for="content-input" id="input-label">Link to check</label>
+            <textarea id="content-input" name="content" maxlength="2048" spellcheck="false" placeholder="Paste a link, e.g. https://example.com" aria-describedby="input-guidance"></textarea>
+            <div class="input-meta">
+              <span id="input-guidance">Tip: you can paste a link without “https://”.</span>
+              <span id="character-count">0 / 2,048</span>
+            </div>
+            <div class="form-actions">
+              <button class="text-button" type="button" id="example-button">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg>
+                Load example
+              </button>
+              <button class="analyze-button" type="submit">
+                Check for warning signs
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
+              </button>
+            </div>
+          </form>
+          <p class="keyboard-note">SHORTCUT <kbd>Ctrl</kbd> <span>+</span> <kbd>Enter</kbd> TO CHECK</p>
+        </div>
+
+        <section class="result-panel" aria-labelledby="result-heading" aria-live="polite" aria-atomic="true">
+          <div class="panel-topline">
+            <span class="step-index">02 <i></i> READOUT</span>
+            <span class="result-state" id="result-state">AWAITING INPUT</span>
+          </div>
+          <h2 id="result-heading">Signal report</h2>
+          <div id="result-output" class="result-output">
+            <div class="empty-state">
+              <div class="empty-orbit" aria-hidden="true"><span></span><b>?</b></div>
+              <p class="empty-title">Nothing on the radar yet.</p>
+              <p class="empty-copy">Your findings will appear here, with the specific signals that influenced the assessment.</p>
+              <div class="empty-foot"><span></span> READY WHEN YOU ARE</div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="page-footer">
+        <p><span class="footer-mark">SC / 01</span> A first-pass screen, not a verdict. Attackers adapt; always verify through a trusted channel.</p>
+        <a href="#method-note">HOW IT WORKS <span aria-hidden="true">↗</span></a>
+      </footer>
+
+      <section class="method-note" id="method-note" aria-labelledby="method-heading">
+        <div class="method-number">NOTE<br>01</div>
+        <div>
+          <h2 id="method-heading">Signals, not certainty.</h2>
+          <p>This version uses transparent, hand-weighted patterns for urgency, credential requests, link structure, and other common warning signs. The score is not a probability, and this baseline has not been trained or validated on a labeled dataset.</p>
+        </div>
+        <div class="method-tag">LOCAL<br>BASELINE</div>
+      </section>
+    </main>
+  </body>
+</html>
